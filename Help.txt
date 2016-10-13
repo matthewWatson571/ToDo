@@ -1,0 +1,27 @@
+---Main Menu---
+0. Exit the program
+1. Add an Item
+2. Remove an Item
+3. View List
+4. Prioritize List
+5. Load list from File
+6. Export list to File
+7. Clear the List
+8. HELP!
+
+1. Add an Item
+	Adds an item to your To Do list.
+2. Remove an Item
+	Removes an item from your list.
+3. View List
+	Prints the current list on screen.
+4. Prioritize List
+	Allows you to flag a list item as top priority.
+5. Load list from File
+	Loads the saved list as the current list.
+6. Export list to File
+	Saves the current list as the saved list.
+7. Clear the List
+	Clears the current list.
+8. HELP!
+	Brings you here.
