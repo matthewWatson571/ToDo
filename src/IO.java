@@ -1,10 +1,5 @@
-import java.awt.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
-
 /**
  * Created by Matthew.Watson on 10/12/16.
  */
@@ -16,14 +11,27 @@ public class IO extends Doing{
             outFile.println(toDoList.get(i));
         }
         outFile.close();
-        Desktop.getDesktop().open(new File(fileName));
+        IO.clear();
+        System.out.println("List Exported.");
     }
-
+    public void clearList() {
+        toDoList.clear();
+        IO.clear();
+        System.out.println("List Cleared");
+    }
     public void loadList() throws IOException{
         Scanner s = new Scanner(new File(fileName));
         while (s.hasNext()){
             toDoList.add(s.nextLine());
         }
+        System.out.println("List Loaded.");
         s.close();
     }
+
+    public static void clear(){
+     for (int i = 0; i < 50; ++i)
+         System.out.println("\n"); //Somebody please tell me if this is a terrible thing to do.
+ }
+
+
 }
