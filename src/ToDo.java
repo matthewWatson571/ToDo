@@ -5,6 +5,7 @@ import java.io.IOException;
  */
 public class ToDo {
     public static void main(String[] args) throws IOException{
-        Menu.menuSwitch();
+       Menu m = new Menu();
+        m.menuSwitch();
     }
 }

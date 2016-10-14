@@ -7,8 +7,11 @@ import java.util.Scanner;
  * Created by Matthew.Watson on 10/13/16.
  */
 public class Menu {
+    IO io = new IO();
+    Grocery g= new Grocery();
+    Doing d = new Doing();
 
-    public static void menuSwitch() throws IOException {
+    public void menuSwitch() throws IOException {
         Doing one = new Doing();
         IO two = new IO();
         String fileName = "Help.txt";
@@ -18,23 +21,21 @@ public class Menu {
             switch (menuItem) {
 
                 case 1:
-                    one.addToList();
-                    two.clear();
+                    addListMenu();
                     break;
                 case 2:
                     one.removeFromList();
                     break;
                 case 3:
                     two.clear();
-                    one.viewList();
+                    viewListMenu();
                     break;
                 case 4:
                     one.priority();
-                    two.clear();
                     break;
                 case 5:
                     two.clear();
-                    two.loadList();
+                    loadListMenu();
                     break;
                 case 6:
                     two.exportList();
@@ -54,6 +55,77 @@ public class Menu {
     }
 
 
+    public void loadListMenu() throws IOException {
+        System.out.println("Which list would you like to load?");
+        int menuItem = -1;
+        if (menuItem != 0) {
+            menuItem = Menu.showListMenu();
+            switch (menuItem) {
+
+                case 1:
+                    io.loadToDoList();
+                    break;
+                case 2:
+                    io.loadGroceryList();
+                    break;
+                case 3:
+                    io.loadPersonalList();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Please choose 1, 2, or 3");
+            }
+        }
+    }
+
+    public void addListMenu() throws IOException {
+        System.out.println("Which list would you like to add to?");
+        int menuItem = -1;
+        if (menuItem != 0) {
+            menuItem = Menu.showListMenu();
+            switch (menuItem) {
+                case 1:
+                    d.addToList();
+                    break;
+                case 2:
+                    g.addToGroceryList();
+                    break;
+                case 3:
+                    g.addToPersonalList();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Please choose 1, 2, or 3");
+            }
+        }
+    }
+    public void viewListMenu() throws IOException {
+        System.out.println("Which list would you like to view?");
+        int menuItem = -1;
+        if (menuItem != 0) {
+            menuItem = Menu.showListMenu();
+            switch (menuItem) {
+                case 1:
+                    IO.clear();
+                    io.viewList();
+                    break;
+                case 2:
+                    IO.clear();
+                    g.viewGroceryList();
+                    break;
+                case 3:
+                    IO.clear();
+                    g.viewPersonalList();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("Please choose 1, 2, or 3");
+            }
+        }
+    }
     public static int showMenu() {
         int choice;
         Scanner input = new Scanner(System.in);
@@ -72,6 +144,15 @@ public class Menu {
         choice = input.nextInt();
         return choice;
     }
-
+    static int showListMenu() {
+        int choice;
+        Scanner input = new Scanner(System.in);
+        System.out.println("0. Exit to Main Menu");
+        System.out.println("1. ToDo List");
+        System.out.println("2. Grocery List");
+        System.out.println("3. Personal Item List");
+        choice = input.nextInt();
+        return choice;
+    }
 
 }
